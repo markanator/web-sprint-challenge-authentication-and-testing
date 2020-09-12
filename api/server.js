@@ -1,3 +1,4 @@
+require('dotenv/config');
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
@@ -12,7 +13,7 @@ server.use(helmet());
 server.use(cors());
 server.use(express.json());
 
-server.use('/api/auth', authRouter);
-server.use('/api/jokes', authenticate, jokesRouter);
+server.use('/auth', authRouter);
+server.use('/jokes', authenticate, jokesRouter);
 
 module.exports = server;
