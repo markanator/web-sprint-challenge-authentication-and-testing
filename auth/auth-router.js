@@ -8,10 +8,9 @@ const router = express.Router();
 router.post('/register', validateRegBod(), async (req, res, next) => {
 	try {
 		const { username, password } = req.body;
-		const user = Users.findBy({ username }).first();
+		const user = await Users.findBy({ username }).first();
 
 		if (user && user.username !== undefined) {
-			console.log(user.username);
 			return res.status(409).json({
 				message: 'Username is already taken',
 			});
